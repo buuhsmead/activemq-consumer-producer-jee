@@ -5,7 +5,7 @@
 	<artifactId>jms-sender</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Java EE example</name>
+	<name>Java EE example :: JMS Sender</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
