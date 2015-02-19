@@ -14,10 +14,10 @@ import javax.jms.TextMessage;
 @Stateless
 public class MessageSender {
 
-	@Resource(lookup = "jms/ConnectionFactory")
+	@Resource(lookup = "java:/ConnectionFactory")
 	private ConnectionFactory connectionFactory;
 
-	@Resource(lookup = "jms/Queue")
+	@Resource(lookup = "java:/queue/HELLOWORLDMDBQueue")
 	private Queue queue;
 
 	public void sendMessage(String message) throws JMSException {
