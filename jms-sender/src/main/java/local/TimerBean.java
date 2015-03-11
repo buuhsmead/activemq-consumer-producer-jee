@@ -13,10 +13,10 @@ public class TimerBean {
 	@EJB
 	public MessageSender messageSender;
 	
-	@Schedule(second="*/10", minute="*",hour="*", persistent=false)
+	@Schedule(second="*/20", minute="*",hour="*", persistent=false)
 	public void timeout(Timer timer) {
-		System.out.println("Producing 1000 messages every 10 seconds.");
-		for (int i = 0; i < 1000; i++){
+		System.out.println("Producing 100 messages every 20 seconds.");
+		for (int i = 0; i < 100; i++){
 			try {
 				messageSender.sendMessage("message nr " + counter);
 			} catch (JMSException e) {
