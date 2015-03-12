@@ -1,6 +1,5 @@
 package local;
 
-
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -14,23 +13,23 @@ import javax.jms.TextMessage;
 @Stateless
 public class MessageSender {
 
-	@Resource(lookup = "java:/ConnectionFactory")
-	private ConnectionFactory connectionFactory;
+    @Resource(lookup = "java:/ConnectionFactory")
+    private ConnectionFactory connectionFactory;
 
-	@Resource(lookup = "java:/queue/HELLOWORLDMDBQueue")
-	private Queue queue;
+    @Resource(lookup = "java:/queue/HELLOWORLDMDBQueue")
+    private Queue queue;
 
-	public void sendMessage(String message) throws JMSException {
-		System.out.println("Sending message: " + message);
+    public void sendMessage(final String message) throws JMSException {
+        System.out.println("Sending message: " + message);
 
-		Connection connection = connectionFactory.createConnection();
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		MessageProducer messageProducer = session.createProducer(queue);
+        final Connection connection = this.connectionFactory.createConnection();
+        final Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        final MessageProducer messageProducer = session.createProducer(this.queue);
 
-		TextMessage jsmTextmessage = session.createTextMessage();
-		jsmTextmessage.setText(message);
-		messageProducer.send(jsmTextmessage);
-		session.close();
-		connection.close();
-	}
+        final TextMessage jsmTextmessage = session.createTextMessage();
+        jsmTextmessage.setText(message);
+        messageProducer.send(jsmTextmessage);
+        session.close();
+        connection.close();
+    }
 }
